@@ -1,0 +1,12 @@
+-- Migration 028: Remove old PDF template columns
+-- Removes deprecated columns that may exist in older databases
+-- Uses ALTER TABLE IGNORE for MariaDB compatibility
+
+-- Remove pdf_template_family if exists
+ALTER TABLE app_settings DROP COLUMN IF EXISTS pdf_template_family;
+
+-- Remove pdf_template_payment if exists  
+ALTER TABLE app_settings DROP COLUMN IF EXISTS pdf_template_payment;
+
+-- Remove pdf_template_subscription if exists
+ALTER TABLE app_settings DROP COLUMN IF EXISTS pdf_template_subscription;

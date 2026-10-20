@@ -1,0 +1,4 @@
+# Απόκρυψη του φακέλου licenses από search engines
+User-agent: *
+Disallow: /licenses/
+Disallow: /validate_license.php

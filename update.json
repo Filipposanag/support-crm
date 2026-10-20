@@ -1,0 +1,7 @@
+{
+  "latest_version": "3.0.0",
+  "release_date": "2026-01-24",
+  "download_url": "https://example.com/downloads/SupportCRM-Setup-3.0.0.exe",
+  "changelog": "• Support CRM v3.0.0 - Initial Release\n• Client Management System\n• Support Session Tracking\n• Real-time Session Timer\n• Auto-billing System\n• RustDesk Integration (Configuration)\n• Modern UI with Persistent Settings\n• Bilingual Support (Greek/English)",
+  "mandatory": false
+}

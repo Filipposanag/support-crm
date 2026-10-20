@@ -1,0 +1,107 @@
+Support CRM - License Agreement
+================================
+
+Copyright © 2026 Filippos Anagnostopoulos
+All Rights Reserved
+
+EDUCATIONAL USE LICENSE
+-----------------------
+
+This software ("Support CRM") was developed for educational purposes as part 
+of a university project.
+
+The source code and design of this application constitute the intellectual 
+property of the creator.
+
+THIRD-PARTY SOFTWARE
+--------------------
+
+This application uses RustDesk as an external remote access tool. RustDesk is 
+independent open-source software and is governed by its own license.
+
+All respective licenses of third-party components remain the property of their 
+owners.
+
+DISCLAIMER
+----------
+
+This software is provided "as is" without warranty of any kind, either express 
+or implied, including but not limited to the warranties of merchantability, 
+fitness for a particular purpose, or non-infringement.
+
+NO WARRANTY FOR COMMERCIAL USE.
+
+The author shall not be liable for any damages arising from the use of this 
+software.
+
+RESTRICTIONS
+------------
+
+1. This software is provided for educational and demonstration purposes only.
+2. Commercial use requires explicit written permission from the author.
+3. Redistribution of this software, modified or unmodified, is not permitted 
+   without prior written consent.
+4. The copyright notice and this license must be retained in all copies or 
+   substantial portions of the software.
+
+CONTACT
+-------
+
+For permissions, questions, or commercial licensing inquiries, please contact:
+Filippos Anagnostopoulos — https://github.com/Filipposanag
+
+---
+
+Ελληνική Έκδοση
+================
+
+Πνευματικά Δικαιώματα © 2026 Φίλιππος Αναγνωστόπουλος
+Με επιφύλαξη παντός δικαιώματος
+
+ΑΔΕΙΑ ΕΚΠΑΙΔΕΥΤΙΚΗΣ ΧΡΗΣΗΣ
+---------------------------
+
+Το λογισμικό "Support CRM" αναπτύχθηκε για εκπαιδευτικούς σκοπούς στο πλαίσιο 
+πανεπιστημιακής εργασίας.
+
+Ο πηγαίος κώδικας και ο σχεδιασμός της εφαρμογής αποτελούν πνευματική ιδιοκτησία 
+του δημιουργού.
+
+ΛΟΓΙΣΜΙΚΟ ΤΡΙΤΩΝ
+----------------
+
+Η εφαρμογή χρησιμοποιεί το RustDesk ως εξωτερικό εργαλείο απομακρυσμένης 
+πρόσβασης. Το RustDesk αποτελεί ανεξάρτητο λογισμικό ανοικτού κώδικα και 
+διέπεται από τη δική του άδεια χρήσης.
+
+Όλες οι αντίστοιχες άδειες των στοιχείων τρίτων παραμένουν ιδιοκτησία των 
+κατόχων τους.
+
+ΑΠΟΠΟΙΗΣΗ ΕΥΘΥΝΗΣ
+-----------------
+
+Το λογισμικό παρέχεται "ως έχει" χωρίς καμία εγγύηση, ρητή ή σιωπηρή, 
+συμπεριλαμβανομένων, ενδεικτικά, των εγγυήσεων εμπορευσιμότητας, καταλληλότητας 
+για συγκεκριμένο σκοπό ή μη παραβίασης.
+
+ΔΕΝ ΠΑΡΕΧΕΤΑΙ ΚΑΜΙΑ ΕΓΓΥΗΣΗ ΓΙΑ ΕΜΠΟΡΙΚΗ ΧΡΗΣΗ.
+
+Ο δημιουργός δεν φέρει ευθύνη για οποιεσδήποτε ζημίες προκύψουν από τη χρήση 
+του λογισμικού.
+
+ΠΕΡΙΟΡΙΣΜΟΙ
+-----------
+
+1. Το λογισμικό παρέχεται αποκλειστικά για εκπαιδευτικούς και επιδεικτικούς 
+   σκοπούς.
+2. Η εμπορική χρήση απαιτεί ρητή γραπτή άδεια από τον δημιουργό.
+3. Η αναδιανομή του λογισμικού, τροποποιημένου ή μη, δεν επιτρέπεται χωρίς 
+   προηγούμενη γραπτή συγκατάθεση.
+4. Η ανακοίνωση πνευματικών δικαιωμάτων και η παρούσα άδεια πρέπει να 
+   διατηρούνται σε όλα τα αντίγραφα ή σημαντικά τμήματα του λογισμικού.
+
+ΕΠΙΚΟΙΝΩΝΙΑ
+-----------
+
+Για άδειες, ερωτήσεις ή εμπορική χρήση, επικοινωνήστε με:
+Φίλιππος Αναγνωστόπουλος — https://github.com/Filipposanag

@@ -1,0 +1,22 @@
+-- Migration 017: Add subscription_code to subscriptions table and copy from payments
+-- Date: 2025-11-21
+-- Description: Adds subscription_code column to subscriptions table and copies existing codes from payments
+
+-- Add subscription_code column if it doesn't exist
+ALTER TABLE subscriptions 
+ADD COLUMN IF NOT EXISTS subscription_code VARCHAR(50) 
+COMMENT 'Subscription code (copied from payment)';
+
+-- Add index for subscription_code if it doesn't exist
+CREATE INDEX IF NOT EXISTS idx_subscriptions_code ON subscriptions(subscription_code);
+
+-- Copy subscription_code from payments to subscriptions for existing records
+UPDATE subscriptions s
+INNER JOIN payments p ON s.payment_id = p.id
+SET s.subscription_code = p.subscription_code
+WHERE s.subscription_code IS NULL 
+  AND p.subscription_code IS NOT NULL 
+  AND p.subscription_code != '';
+
+-- Log completion
+SELECT 'Migration 017 completed: subscription_code added to subscriptions table' as status;

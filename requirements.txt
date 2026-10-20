@@ -1,0 +1,46 @@
+# UI Framework
+PySide6>=6.6.0
+
+# Database
+PyMySQL>=1.1.0
+
+# Environment variables
+python-dotenv>=1.0.0
+
+# PDF Generation
+reportlab>=4.0.0
+
+# Excel Export
+openpyxl>=3.1.0
+
+# Testing
+pytest>=7.4.0
+pytest-qt>=4.2.0
+
+# Optional: Alternative Qt binding (uncomment if needed)
+# PyQt6>=6.6.0
+
+# MySQL connector for configurator
+mysql-connector-python>=8.2.0
+
+# HTTP Requests for update checker and license validation
+requests>=2.31.0
+certifi>=2023.7.22  # SSL certificates for HTTPS
+urllib3>=2.0.0  # Required by requests
+
+# Process management for concurrent users
+psutil>=5.9.0
+
+# File locking for session management
+filelock>=3.12.0
+
+# Password hashing for authentication
+bcrypt>=4.0.0
+
+# Build/Packaging
+nuitka>=2.0.0
+
+
+
+# Pinned: Pillow 12.x wheel fails to load _imaging DLL on this Windows setup (fixed 2026-09-06)
+Pillow<12

@@ -1,0 +1,94 @@
+-- Migration 013: Add audit triggers for members table
+-- Description: Audit log triggers for tracking members table changes (INSERT, UPDATE, DELETE)
+-- Date: November 20, 2025
+
+-- ============================================================================
+-- Triggers for members table
+-- ============================================================================
+
+DELIMITER $
+
+-- Trigger: After INSERT on members
+CREATE TRIGGER trg_members_after_insert
+AFTER INSERT ON members
+FOR EACH ROW
+BEGIN
+    INSERT INTO audit_log (table_name, record_id, operation, new_values)
+    VALUES (
+        'members',
+        NEW.id,
+        'INSERT',
+        JSON_OBJECT(
+            'family_id', NEW.family_id,
+            'first_name', NEW.first_name,
+            'last_name', NEW.last_name,
+            'national_id', NEW.national_id,
+            'birth_date', NEW.birth_date,
+            'profession', NEW.profession,
+            'is_active', NEW.is_active
+        )
+    );
+END$
+
+-- Trigger: After UPDATE on members
+CREATE TRIGGER trg_members_after_update
+AFTER UPDATE ON members
+FOR EACH ROW
+BEGIN
+    INSERT INTO audit_log (table_name, record_id, operation, old_values, new_values)
+    VALUES (
+        'members',
+        NEW.id,
+        'UPDATE',
+        JSON_OBJECT(
+            'family_id', OLD.family_id,
+            'first_name', OLD.first_name,
+            'last_name', OLD.last_name,
+            'national_id', OLD.national_id,
+            'birth_date', OLD.birth_date,
+            'profession', OLD.profession,
+            'is_active', OLD.is_active
+        ),
+        JSON_OBJECT(
+            'family_id', NEW.family_id,
+            'first_name', NEW.first_name,
+            'last_name', NEW.last_name,
+            'national_id', NEW.national_id,
+            'birth_date', NEW.birth_date,
+            'profession', NEW.profession,
+            'is_active', NEW.is_active
+        )
+    );
+END$
+
+-- Trigger: After DELETE on members
+CREATE TRIGGER trg_members_after_delete
+AFTER DELETE ON members
+FOR EACH ROW
+BEGIN
+    INSERT INTO audit_log (table_name, record_id, operation, old_values)
+    VALUES (
+        'members',
+        OLD.id,
+        'DELETE',
+        JSON_OBJECT(
+            'family_id', OLD.family_id,
+            'first_name', OLD.first_name,
+            'last_name', OLD.last_name,
+            'national_id', OLD.national_id,
+            'birth_date', OLD.birth_date,
+            'profession', OLD.profession,
+            'is_active', OLD.is_active
+        )
+    );
+END$
+
+DELIMITER ;
+
+
+-- ============================================================================
+-- Mark migration as applied
+-- ============================================================================
+INSERT INTO schema_migrations (version, description)
+VALUES (13, 'Add audit triggers for members table')
+ON DUPLICATE KEY UPDATE description=description;

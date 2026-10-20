@@ -1,0 +1,146 @@
+-- Migration 019: Fix audit triggers after family_number removal
+-- Date: 2025-11-21
+-- Description: Recreates audit triggers for families table without family_number field
+
+-- Drop existing triggers
+DROP TRIGGER IF EXISTS trg_families_after_insert;
+DROP TRIGGER IF EXISTS trg_families_after_update;
+DROP TRIGGER IF EXISTS trg_families_after_delete;
+
+-- Recreate INSERT trigger (without family_number)
+DELIMITER $$
+CREATE TRIGGER trg_families_after_insert
+AFTER INSERT ON families
+FOR EACH ROW
+BEGIN
+    INSERT INTO audit_log (
+        table_name,
+        record_id,
+        action,
+        old_values,
+        new_values,
+        changed_by,
+        changed_at
+    ) VALUES (
+        'families',
+        NEW.id,
+        'INSERT',
+        NULL,
+        JSON_OBJECT(
+            'legacy_code', NEW.legacy_code,
+            'last_name', NEW.last_name,
+            'first_name', NEW.first_name,
+            'father_name', NEW.father_name,
+            'address', NEW.address,
+            'postal_code', NEW.postal_code,
+            'city', NEW.city,
+            'phone', NEW.phone,
+            'mobile', NEW.mobile,
+            'email', NEW.email,
+            'national_id', NEW.national_id,
+            'is_active', NEW.is_active
+        ),
+        COALESCE(@current_user, USER()),
+        NOW()
+    );
+END$$
+DELIMITER ;
+
+-- Recreate UPDATE trigger (without family_number)
+DELIMITER $$
+CREATE TRIGGER trg_families_after_update
+AFTER UPDATE ON families
+FOR EACH ROW
+BEGIN
+    INSERT INTO audit_log (
+        table_name,
+        record_id,
+        action,
+        old_values,
+        new_values,
+        changed_by,
+        changed_at
+    ) VALUES (
+        'families',
+        NEW.id,
+        'UPDATE',
+        JSON_OBJECT(
+            'legacy_code', OLD.legacy_code,
+            'last_name', OLD.last_name,
+            'first_name', OLD.first_name,
+            'father_name', OLD.father_name,
+            'address', OLD.address,
+            'postal_code', OLD.postal_code,
+            'city', OLD.city,
+            'phone', OLD.phone,
+            'mobile', OLD.mobile,
+            'email', OLD.email,
+            'national_id', OLD.national_id,
+            'is_active', OLD.is_active
+        ),
+        JSON_OBJECT(
+            'legacy_code', NEW.legacy_code,
+            'last_name', NEW.last_name,
+            'first_name', NEW.first_name,
+            'father_name', NEW.father_name,
+            'address', NEW.address,
+            'postal_code', NEW.postal_code,
+            'city', NEW.city,
+            'phone', NEW.phone,
+            'mobile', NEW.mobile,
+            'email', NEW.email,
+            'national_id', NEW.national_id,
+            'is_active', NEW.is_active
+        ),
+        COALESCE(@current_user, USER()),
+        NOW()
+    );
+END$$
+DELIMITER ;
+
+-- Recreate DELETE trigger (without family_number)
+DELIMITER $$
+CREATE TRIGGER trg_families_after_delete
+AFTER DELETE ON families
+FOR EACH ROW
+BEGIN
+    INSERT INTO audit_log (
+        table_name,
+        record_id,
+        action,
+        old_values,
+        new_values,
+        changed_by,
+        changed_at
+    ) VALUES (
+        'families',
+        OLD.id,
+        'DELETE',
+        JSON_OBJECT(
+            'legacy_code', OLD.legacy_code,
+            'last_name', OLD.last_name,
+            'first_name', OLD.first_name,
+            'father_name', OLD.father_name,
+            'address', OLD.address,
+            'postal_code', OLD.postal_code,
+            'city', OLD.city,
+            'phone', OLD.phone,
+            'mobile', OLD.mobile,
+            'email', OLD.email,
+            'national_id', OLD.national_id,
+            'is_active', OLD.is_active
+        ),
+        NULL,
+        COALESCE(@current_user, USER()),
+        NOW()
+    );
+END$$
+DELIMITER ;
+
+-- Mark migration as complete
+INSERT INTO schema_migrations (version, description, applied_at)
+VALUES (19, 'Fix audit triggers after family_number removal', NOW())
+ON DUPLICATE KEY UPDATE description=description;
+
+-- Log completion
+SELECT 'Migration 019 completed: Audit triggers fixed' as status;
