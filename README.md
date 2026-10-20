@@ -1,5 +1,8 @@
 # Support CRM
 
+**English** · [Ελληνικά](README.el.md)
+
+
 A Windows desktop CRM for IT remote-support businesses: manage clients, track RustDesk and phone support sessions with a built-in timer, sell prepaid support packages, and issue receipts and invoices as PDFs — all on top of a MariaDB/MySQL database.
 
 Built with **Python 3.11**, **PySide6 (Qt 6)** and **MariaDB**. The UI is bilingual (Greek / English).
